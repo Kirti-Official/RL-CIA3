@@ -1,0 +1,110 @@
+[
+  {
+    "NS_queue": "Low",
+    "EW_queue": "Low",
+    "current_phase": "NS-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "Low",
+    "EW_queue": "Low",
+    "current_phase": "EW-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "Low",
+    "EW_queue": "Medium",
+    "current_phase": "NS-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "Low",
+    "EW_queue": "Medium",
+    "current_phase": "EW-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "Low",
+    "EW_queue": "High",
+    "current_phase": "NS-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "Low",
+    "EW_queue": "High",
+    "current_phase": "EW-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "Medium",
+    "EW_queue": "Low",
+    "current_phase": "NS-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "Medium",
+    "EW_queue": "Low",
+    "current_phase": "EW-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "Medium",
+    "EW_queue": "Medium",
+    "current_phase": "NS-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "Medium",
+    "EW_queue": "Medium",
+    "current_phase": "EW-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "Medium",
+    "EW_queue": "High",
+    "current_phase": "NS-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "Medium",
+    "EW_queue": "High",
+    "current_phase": "EW-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "High",
+    "EW_queue": "Low",
+    "current_phase": "NS-Green",
+    "best_action": "Keep phase"
+  },
+  {
+    "NS_queue": "High",
+    "EW_queue": "Low",
+    "current_phase": "EW-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "High",
+    "EW_queue": "Medium",
+    "current_phase": "NS-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "High",
+    "EW_queue": "Medium",
+    "current_phase": "EW-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "High",
+    "EW_queue": "High",
+    "current_phase": "NS-Green",
+    "best_action": "Switch phase"
+  },
+  {
+    "NS_queue": "High",
+    "EW_queue": "High",
+    "current_phase": "EW-Green",
+    "best_action": "Switch phase"
+  }
+]
