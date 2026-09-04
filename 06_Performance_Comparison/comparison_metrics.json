@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Q-learning",
+    "Average Reward (last 50 ep)": -1068.04,
+    "Cumulative Reward (all ep)": -710267.0,
+    "Convergence Speed (episodes)": 204,
+    "Stability (std dev, last 50 ep)": 118.784,
+    "Success Rate (last 50 ep)": 94.0
+  },
+  {
+    "name": "SARSA",
+    "Average Reward (last 50 ep)": -1061.58,
+    "Cumulative Reward (all ep)": -711070.0,
+    "Convergence Speed (episodes)": 189,
+    "Stability (std dev, last 50 ep)": 96.944,
+    "Success Rate (last 50 ep)": 98.0
+  },
+  {
+    "name": "Expected SARSA",
+    "Average Reward (last 50 ep)": -1076.8,
+    "Cumulative Reward (all ep)": -712691.0,
+    "Convergence Speed (episodes)": 201,
+    "Stability (std dev, last 50 ep)": 125.191,
+    "Success Rate (last 50 ep)": 92.0
+  },
+  {
+    "name": "Double Q-learning",
+    "Average Reward (last 50 ep)": -1044.46,
+    "Cumulative Reward (all ep)": -700451.0,
+    "Convergence Speed (episodes)": 173,
+    "Stability (std dev, last 50 ep)": 105.098,
+    "Success Rate (last 50 ep)": 98.0
+  }
+]
