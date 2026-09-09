@@ -1,57 +1,88 @@
-# CIA-3 Component 2 — Micro Project
-## Transportation Domain: Smart Traffic Signal Optimization
+# Smart Traffic Signal Optimization using Reinforcement Learning
 
-This project implements and compares four reinforcement learning approaches on a
-custom single-intersection traffic signal control environment (continuing the
-Component 1 case study).
+## CIA-3 Component 2 — Micro Project
 
-## The problem
-A single 4-way intersection (North/South/East/West approaches) must decide every
-control interval whether to KEEP the current green phase (NS-green or EW-green)
-or SWITCH to the other phase, to minimize vehicle queueing as traffic arrives
-stochastically on each approach. A fixed-time signal can't adapt to uneven,
-time-varying demand — this is the motivation for using RL.
+### Transportation Domain: Adaptive Traffic Signal Control
 
-## Folder structure
-- `traffic_env.py` — the shared custom intersection environment (state, action, reward, dynamics)
-- `metrics.py` — the 5 performance metrics used for comparison
-- `run_all.py` — trains all four agents and generates every deliverable below
-- `agents/` — one file per RL approach, each with a docstring explaining its update rule and why it's relevant here
-- `04_RL_Implementations/` — Deliverable 1: per-approach learning curve, final Q-table, final policy, and raw episode rewards
-- `05_Results_and_Graphs/` — Deliverable 3: combined learning curves and average-queue-length curves across all four approaches
-- `06_Performance_Comparison/` — Deliverable 2: metrics JSON, markdown comparison table, and one bar chart per metric
+A comparative study of four Temporal-Difference Reinforcement Learning approaches for adaptive traffic signal optimization at a simulated single intersection.
 
-## Environment details
-- **State** (18 discrete states): queue length on NS approaches (Low/Med/High),
-  queue length on EW approaches (Low/Med/High), current green phase.
-- **Actions** (2): Keep current phase, or Switch phase (switching costs one
-  step of zero discharge — modelling the real yellow/all-red clearance interval
-  lost time — plus a reward penalty, discouraging thrashing between phases).
-- **Reward**: negative total vehicles queued each step (agent is rewarded for
-  keeping the intersection flowing).
-- **Arrivals**: Poisson-distributed vehicle arrivals per approach per step —
-  stochastic, as in Component 1's "Deterministic/Stochastic" characterization.
+---
 
-## The four RL approaches (chosen to be logically connected — all TD-control variants)
-1. **Q-learning** — off-policy baseline
-2. **SARSA** — on-policy contrast to Q-learning
-3. **Expected SARSA** — variance-reduced on-policy update
-4. **Double Q-learning** — corrects Q-learning's maximisation-bias overestimation
+## 📌 Project Overview
 
-## How to reproduce
-```
-pip install numpy matplotlib
-python3 run_all.py
-```
-All four agents train on the identical arrival sequence (shared random seed),
-so the comparison is fair — differences come only from the algorithm.
+Traffic signal control is a real-time sequential decision-making problem in which the controller must continuously decide how to allocate green time between competing traffic flows.
 
-## Headline result
-All four agents learned to cut average queueing from ~3000 (untrained,
-essentially random switching) down to ~1000 within 500 episodes.
-**Double Q-learning converged fastest (173 episodes) and achieved the best
-average reward and cumulative reward**, plausibly because correcting Q-value
-overestimation prevents the agent from being overconfident about premature
-phase switches. **SARSA had the lowest variance (std dev 96.9)**, consistent
-with on-policy learning producing more consistent, exploration-aware behaviour.
-Full metrics are in `06_Performance_Comparison/comparison_table.md`.
+This project formulates traffic signal optimization as a Reinforcement Learning (RL) problem and implements four closely related Temporal-Difference (TD) control algorithms:
+
+1. Q-Learning
+2. SARSA
+3. Expected SARSA
+4. Double Q-Learning
+
+All four algorithms are trained and evaluated using the same custom traffic-signal environment and experimental configuration.
+
+The objective is to learn signal-control policies that reduce vehicle queueing while avoiding unnecessary switching between traffic phases.
+
+---
+
+## 🚦 Problem Statement
+
+The project models a single four-way signalized intersection with:
+
+- North approach
+- South approach
+- East approach
+- West approach
+
+At every control interval, the RL agent must choose between two actions:
+
+- **Keep** — continue the current green phase
+- **Switch** — change to the opposing green phase
+
+Vehicle arrivals are stochastic, and traffic queues evolve continuously based on vehicle arrivals and the signal-control decisions.
+
+The objective is to minimize cumulative queueing over time.
+
+Unlike a fixed-time signal plan, the RL controller can learn different Keep/Switch decisions depending on the observed traffic state.
+
+---
+
+## 🎯 Project Objectives
+
+The main objectives of this project are:
+
+- Formulate adaptive traffic signal control as an RL problem.
+- Develop a custom traffic intersection environment.
+- Implement four logically related TD-control algorithms.
+- Train all four algorithms under comparable conditions.
+- Generate learning curves and policy outputs.
+- Evaluate the algorithms using multiple performance metrics.
+- Compare their learning behaviour and performance.
+- Provide an interactive dashboard for visualization.
+- Propose a Multi-Agent Reinforcement Learning extension for coordinated intersections.
+
+---
+
+# 🧠 Reinforcement Learning Formulation
+
+## Environment
+
+The environment represents a single four-way signalized intersection.
+
+Two signal phases are considered:
+
+- **NS-Green:** North and South approaches receive green.
+- **EW-Green:** East and West approaches receive green.
+
+Vehicles arrive stochastically on all four approaches.
+
+The environment models vehicle queues, signal phases, vehicle discharge, switching cost, and stochastic arrivals.
+
+---
+
+## State Space
+
+The state is represented using three components:
+
+```text
+(NS Queue Level, EW Queue Level, Current Phase)
